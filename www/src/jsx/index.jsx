@@ -22,11 +22,11 @@ $(function() {
 });
 
 
-var myScroll;
-function loaded() {
-    myScroll = new iScroll('wrapper');
-}
-document.addEventListener('DOMContentLoaded', loaded, false);
+// var myScroll;
+// function loaded() {
+//     myScroll = new iScroll('wrapper');
+// }
+// document.addEventListener('DOMContentLoaded', loaded, false);
 
 
 
@@ -37,12 +37,18 @@ let App = React.createClass({
     chaCha: function(asd){
         alert(asd);
     },
+    componentDidMount: function(){
+       setTimeout(function(){
+        let myScroll = new iScroll('wrapper', {'bounce':false});
+       }, 400);
+       let a =12;
+    },
     render: function() {
         let self = this;
         return (
             <div>
             <div id="wrapper" className="scrollable content">
-            <div className="dummy">
+            <div id="no_wrap">
                 <div className="search_bar">
                     <span>Find Substance Information</span>
                     <input type="text"></input>
@@ -51,6 +57,25 @@ let App = React.createClass({
                     <header>
                     Common Searches
                     </header>
+                    <ul>
+                        <li><img src="dist/50.png"></img><span>1Abacavir Sulfate (Ziagen)</span></li>
+                         <li><img src="dist/50.png"></img><span>2Abacavir Sulfate (Ziagen)</span></li>
+                          <li><img src="dist/50.png"></img><span>3Abacavir Sulfate (Ziagen)</span></li>
+                           <li><img src="dist/50.png"></img><span>4Abacavir Sulfate (Ziagen)</span></li>
+                        <li><img src="dist/50.png"></img><span>5Abacavir Sulfate (Ziagen)</span></li>
+                         <li><img src="dist/50.png"></img><span>6Abacavir Sulfate (Ziagen)</span></li>
+                          <li><img src="dist/50.png"></img><span>7Abacavir Sulfate (Ziagen)</span></li>
+                           <li><img src="dist/50.png"></img><span>8Abacavir Sulfate (Ziagen)</span></li>
+                        <li><img src="dist/50.png"></img><span>9Abacavir Sulfate (Ziagen)</span></li>
+                         <li><img src="dist/50.png"></img><span>10Abacavir Sulfate (Ziagen)</span></li>
+                          <li><img src="dist/50.png"></img><span>11Abacavir Sulfate (Ziagen)</span></li>
+                           <li><img src="dist/50.png"></img><span>12Abacavir Sulfate (Ziagen)</span></li>
+                           <li><img src="dist/50.png"></img><span>13Abacavir Sulfate (Ziagen)</span></li>
+                          <li><img src="dist/50.png"></img><span>A14bacavir Sulfate (Ziagen)</span></li>
+                           <li><img src="dist/50.png"></img><span>15Abacavir Sulfate (Ziagen)</span></li>
+                           
+                    </ul>
+                    <div className="clear"></div>
                 </section>
             </div>
             </div>

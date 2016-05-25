@@ -23,11 +23,11 @@ $(function () {
     window.onresize();
 });
 
-var myScroll;
-function loaded() {
-    myScroll = new iScroll('wrapper');
-}
-document.addEventListener('DOMContentLoaded', loaded, false);
+// var myScroll;
+// function loaded() {
+//     myScroll = new iScroll('wrapper');
+// }
+// document.addEventListener('DOMContentLoaded', loaded, false);
 
 var App = React.createClass({
     displayName: 'App',
@@ -37,6 +37,12 @@ var App = React.createClass({
     },
     chaCha: function chaCha(asd) {
         alert(asd);
+    },
+    componentDidMount: function componentDidMount() {
+        setTimeout(function () {
+            var myScroll = new iScroll('wrapper', { 'bounce': false });
+        }, 400);
+        var a = 12;
     },
     render: function render() {
         var self = this;
@@ -48,7 +54,7 @@ var App = React.createClass({
                 { id: 'wrapper', className: 'scrollable content' },
                 React.createElement(
                     'div',
-                    { className: 'dummy' },
+                    { id: 'no_wrap' },
                     React.createElement(
                         'div',
                         { className: 'search_bar' },
@@ -66,7 +72,162 @@ var App = React.createClass({
                             'header',
                             null,
                             'Common Searches'
-                        )
+                        ),
+                        React.createElement(
+                            'ul',
+                            null,
+                            React.createElement(
+                                'li',
+                                null,
+                                React.createElement('img', { src: 'dist/50.png' }),
+                                React.createElement(
+                                    'span',
+                                    null,
+                                    '1Abacavir Sulfate (Ziagen)'
+                                )
+                            ),
+                            React.createElement(
+                                'li',
+                                null,
+                                React.createElement('img', { src: 'dist/50.png' }),
+                                React.createElement(
+                                    'span',
+                                    null,
+                                    '2Abacavir Sulfate (Ziagen)'
+                                )
+                            ),
+                            React.createElement(
+                                'li',
+                                null,
+                                React.createElement('img', { src: 'dist/50.png' }),
+                                React.createElement(
+                                    'span',
+                                    null,
+                                    '3Abacavir Sulfate (Ziagen)'
+                                )
+                            ),
+                            React.createElement(
+                                'li',
+                                null,
+                                React.createElement('img', { src: 'dist/50.png' }),
+                                React.createElement(
+                                    'span',
+                                    null,
+                                    '4Abacavir Sulfate (Ziagen)'
+                                )
+                            ),
+                            React.createElement(
+                                'li',
+                                null,
+                                React.createElement('img', { src: 'dist/50.png' }),
+                                React.createElement(
+                                    'span',
+                                    null,
+                                    '5Abacavir Sulfate (Ziagen)'
+                                )
+                            ),
+                            React.createElement(
+                                'li',
+                                null,
+                                React.createElement('img', { src: 'dist/50.png' }),
+                                React.createElement(
+                                    'span',
+                                    null,
+                                    '6Abacavir Sulfate (Ziagen)'
+                                )
+                            ),
+                            React.createElement(
+                                'li',
+                                null,
+                                React.createElement('img', { src: 'dist/50.png' }),
+                                React.createElement(
+                                    'span',
+                                    null,
+                                    '7Abacavir Sulfate (Ziagen)'
+                                )
+                            ),
+                            React.createElement(
+                                'li',
+                                null,
+                                React.createElement('img', { src: 'dist/50.png' }),
+                                React.createElement(
+                                    'span',
+                                    null,
+                                    '8Abacavir Sulfate (Ziagen)'
+                                )
+                            ),
+                            React.createElement(
+                                'li',
+                                null,
+                                React.createElement('img', { src: 'dist/50.png' }),
+                                React.createElement(
+                                    'span',
+                                    null,
+                                    '9Abacavir Sulfate (Ziagen)'
+                                )
+                            ),
+                            React.createElement(
+                                'li',
+                                null,
+                                React.createElement('img', { src: 'dist/50.png' }),
+                                React.createElement(
+                                    'span',
+                                    null,
+                                    '10Abacavir Sulfate (Ziagen)'
+                                )
+                            ),
+                            React.createElement(
+                                'li',
+                                null,
+                                React.createElement('img', { src: 'dist/50.png' }),
+                                React.createElement(
+                                    'span',
+                                    null,
+                                    '11Abacavir Sulfate (Ziagen)'
+                                )
+                            ),
+                            React.createElement(
+                                'li',
+                                null,
+                                React.createElement('img', { src: 'dist/50.png' }),
+                                React.createElement(
+                                    'span',
+                                    null,
+                                    '12Abacavir Sulfate (Ziagen)'
+                                )
+                            ),
+                            React.createElement(
+                                'li',
+                                null,
+                                React.createElement('img', { src: 'dist/50.png' }),
+                                React.createElement(
+                                    'span',
+                                    null,
+                                    '13Abacavir Sulfate (Ziagen)'
+                                )
+                            ),
+                            React.createElement(
+                                'li',
+                                null,
+                                React.createElement('img', { src: 'dist/50.png' }),
+                                React.createElement(
+                                    'span',
+                                    null,
+                                    'A14bacavir Sulfate (Ziagen)'
+                                )
+                            ),
+                            React.createElement(
+                                'li',
+                                null,
+                                React.createElement('img', { src: 'dist/50.png' }),
+                                React.createElement(
+                                    'span',
+                                    null,
+                                    '15Abacavir Sulfate (Ziagen)'
+                                )
+                            )
+                        ),
+                        React.createElement('div', { className: 'clear' })
                     )
                 )
             ),
