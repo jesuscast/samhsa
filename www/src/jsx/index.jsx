@@ -21,6 +21,15 @@ $(function() {
   window.onresize();
 });
 
+
+var myScroll;
+function loaded() {
+    myScroll = new iScroll('wrapper');
+}
+document.addEventListener('DOMContentLoaded', loaded, false);
+
+
+
 let App = React.createClass({
     getInitialState: function(){
         return {};
@@ -32,7 +41,19 @@ let App = React.createClass({
         let self = this;
         return (
             <div>
-            <h1>HELLO</h1>
+            <div id="wrapper" className="scrollable content">
+            <div className="dummy">
+                <div className="search_bar">
+                    <span>Find Substance Information</span>
+                    <input type="text"></input>
+                </div>
+                <section>
+                    <header>
+                    Common Searches
+                    </header>
+                </section>
+            </div>
+            </div>
             <footer>
                 <ul>
                     <li onClick={self.chaCha.bind(self, "Hey")}><span>Info</span><i className="fa fa-thumb-tack fa-lg"></i></li>

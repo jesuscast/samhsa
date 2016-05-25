@@ -16,12 +16,41 @@ body {
   padding: 0px; }
 
 * {
+  /* This is in order to avoid the annoying color around elements in safari */
   -webkit-tap-highlight-color: transparent; }
+
+.search_bar {
+  width: 61%;
+  margin: 20px auto 0px auto;
+  display: block; }
+  .search_bar span {
+    text-align: center;
+    width: 100%;
+    display: block; }
+  .search_bar input {
+    border-radius: 20px;
+    border: 0px;
+    height: 30px;
+    margin-top: 10px;
+    width: 100%; }
+
+.content {
+  -webkit-overflow-scrolling: touch;
+  position: absolute;
+  width: 100%;
+  height: 90%; }
+  .content .dummy {
+    height: 2000px; }
+  .content section header {
+    border-bottom: 1px solid rgba(51, 51, 51, 0.49);
+    width: 90%;
+    margin: 21px auto 10px auto;
+    height: 24px; }
 
 footer {
   height: 10%;
   display: block;
-  position: absolute;
+  position: fixed;
   width: 100%;
   bottom: 0px;
   background-color: #97d7ff;
@@ -35,6 +64,7 @@ footer {
     footer ul li {
       width: 33%;
       float: left;
+      font-size: 0.9em;
       text-align: center;
       display: -webkit-flex;
       display: -ms-flexbox;

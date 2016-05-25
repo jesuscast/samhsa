@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var test_in_cordova = false;
 
@@ -23,8 +23,14 @@ $(function () {
     window.onresize();
 });
 
+var myScroll;
+function loaded() {
+    myScroll = new iScroll('wrapper');
+}
+document.addEventListener('DOMContentLoaded', loaded, false);
+
 var App = React.createClass({
-    displayName: "App",
+    displayName: 'App',
 
     getInitialState: function getInitialState() {
         return {};
@@ -35,48 +41,70 @@ var App = React.createClass({
     render: function render() {
         var self = this;
         return React.createElement(
-            "div",
+            'div',
             null,
             React.createElement(
-                "h1",
-                null,
-                "HELLO"
+                'div',
+                { id: 'wrapper', className: 'scrollable content' },
+                React.createElement(
+                    'div',
+                    { className: 'dummy' },
+                    React.createElement(
+                        'div',
+                        { className: 'search_bar' },
+                        React.createElement(
+                            'span',
+                            null,
+                            'Find Substance Information'
+                        ),
+                        React.createElement('input', { type: 'text' })
+                    ),
+                    React.createElement(
+                        'section',
+                        null,
+                        React.createElement(
+                            'header',
+                            null,
+                            'Common Searches'
+                        )
+                    )
+                )
             ),
             React.createElement(
-                "footer",
+                'footer',
                 null,
                 React.createElement(
-                    "ul",
+                    'ul',
                     null,
                     React.createElement(
-                        "li",
+                        'li',
                         { onClick: self.chaCha.bind(self, "Hey") },
                         React.createElement(
-                            "span",
+                            'span',
                             null,
-                            "Info"
+                            'Info'
                         ),
-                        React.createElement("i", { className: "fa fa-thumb-tack fa-lg" })
+                        React.createElement('i', { className: 'fa fa-thumb-tack fa-lg' })
                     ),
                     React.createElement(
-                        "li",
+                        'li',
                         null,
                         React.createElement(
-                            "span",
+                            'span',
                             null,
-                            "Support"
+                            'Support'
                         ),
-                        React.createElement("i", { className: "fa fa-star fa-lg" })
+                        React.createElement('i', { className: 'fa fa-star fa-lg' })
                     ),
                     React.createElement(
-                        "li",
+                        'li',
                         null,
                         React.createElement(
-                            "span",
+                            'span',
                             null,
-                            "Social"
+                            'Social'
                         ),
-                        React.createElement("i", { className: "fa fa-group fa-lg" })
+                        React.createElement('i', { className: 'fa fa-group fa-lg' })
                     )
                 )
             )
