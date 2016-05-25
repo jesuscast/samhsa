@@ -1,10 +1,54 @@
+let test_in_cordova = false;
+
+/*
+
+https://gist.github.com/amolk/1599412
+
+Remove rubberband scrolling from web apps on mobile safari (iOS)
+
+*/
+document.body.addEventListener('touchmove', function(event) {
+  console.log(event.source);
+  //if (event.source == document.body)
+    event.preventDefault();
+}, false);
+
+window.onresize = function() {
+  $(document.body).width(window.innerWidth).height(window.innerHeight);
+}
+
+$(function() {
+  window.onresize();
+});
+
+let App = React.createClass({
+    getInitialState: function(){
+        return {};
+    },
+    chaCha: function(asd){
+        alert(asd);
+    },
+    render: function() {
+        let self = this;
+        return (
+            <div>
+            <h1>HELLO</h1>
+            <footer>
+                <ul>
+                    <li onClick={self.chaCha.bind(self, "Hey")}><span>Info</span><i className="fa fa-thumb-tack fa-lg"></i></li>
+                    <li><span>Support</span><i className="fa fa-star fa-lg"></i></li>
+                    <li><span>Social</span><i className="fa fa-group fa-lg"></i></li>
+                </ul>
+            </footer>
+            </div>);
+    }
+});
 
 
  React.render(
             <App />,
            document.getElementById('master'));
 
-/*
 var app = {
     // Application Constructor
     initialize: function() {
@@ -33,6 +77,7 @@ var app = {
     }
 };
 
-app.initialize();
 
-*/
+if(test_in_cordova)
+    app.initialize();
+
