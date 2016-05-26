@@ -128,6 +128,17 @@ let MeetingsList  = React.createClass({
     }
 });
 
+let distance_calculator = (lat1, lon1, lat2, lon2) => {
+    let p = 0.017453292519943295;    // Math.PI / 180
+    let c = Math.cos;
+    let a = 0.5 - c((lat2 - lat1) * p)/2 + 
+      c(lat1 * p) * c(lat2 * p) * 
+      (1 - c((lon2 - lon1) * p))/2;
+
+    return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
+};
+
+
 exports.SupportScreen = React.createClass({
     getInitialState: function(){
         return {
@@ -163,11 +174,34 @@ exports.SupportScreen = React.createClass({
                 complete: function(data){
                     let data_r =  data.responseJSON;
                     let o_k = Object.keys(data_r);
-                    let tmp = []
+                    let tmp = [];
                     for(let i = 0 ; i < o_k.length ; i++) {
                         let o_k_i = Object.keys(data_r[o_k[i]]);
                         for(let j = 0 ; j < o_k_i.length; j ++) {
                             tmp.push(data_r[o_k[i]][o_k_i[j]]);
+                        }
+                    }
+                    let distances = [];
+                    for(let i = 0; i < tmp.length; i++){
+                        if(tmp[i].latitude != 'n/a' && tmp[i].longitude != 'n/a'){ 
+                            distances.push(distance_calculator(tmp[i].latitude, tmp[i].longitude, self.state.lat, self.state.long));
+                        } else {
+                            distances.push(Infinity);
+                        }
+                    }
+                    let needs_sorting = true;
+                    while(needs_sorting == true){
+                        needs_sorting = false;
+                        for(let i = 0; i < (distances.length - 1); i++){
+                            if(distances[i] > distances[i+1]) {
+                                let tmp_d = distances[i];
+                                distances[i] = distances[i+1];
+                                distances[i+1] = tmp_d;
+                                let tmp_h = tmp[i];
+                                tmp[i] = tmp[i+1];
+                                tmp[i+1] = tmp_h;
+                                needs_sorting = true;//
+                            }
                         }
                     }
                     self.setState({ items: tmp });

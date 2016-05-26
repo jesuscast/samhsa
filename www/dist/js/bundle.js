@@ -713,6 +713,14 @@ var MeetingsList = React.createClass({
     }
 });
 
+var distance_calculator = function distance_calculator(lat1, lon1, lat2, lon2) {
+    var p = 0.017453292519943295; // Math.PI / 180
+    var c = Math.cos;
+    var a = 0.5 - c((lat2 - lat1) * p) / 2 + c(lat1 * p) * c(lat2 * p) * (1 - c((lon2 - lon1) * p)) / 2;
+
+    return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
+};
+
 exports.SupportScreen = React.createClass({
     displayName: 'SupportScreen',
 
@@ -755,6 +763,29 @@ exports.SupportScreen = React.createClass({
                         var o_k_i = Object.keys(data_r[o_k[i]]);
                         for (var j = 0; j < o_k_i.length; j++) {
                             tmp.push(data_r[o_k[i]][o_k_i[j]]);
+                        }
+                    }
+                    var distances = [];
+                    for (var _i = 0; _i < tmp.length; _i++) {
+                        if (tmp[_i].latitude != 'n/a' && tmp[_i].longitude != 'n/a') {
+                            distances.push(distance_calculator(tmp[_i].latitude, tmp[_i].longitude, self.state.lat, self.state.long));
+                        } else {
+                            distances.push(Infinity);
+                        }
+                    }
+                    var needs_sorting = true;
+                    while (needs_sorting == true) {
+                        needs_sorting = false;
+                        for (var _i2 = 0; _i2 < distances.length - 1; _i2++) {
+                            if (distances[_i2] > distances[_i2 + 1]) {
+                                var tmp_d = distances[_i2];
+                                distances[_i2] = distances[_i2 + 1];
+                                distances[_i2 + 1] = tmp_d;
+                                var tmp_h = tmp[_i2];
+                                tmp[_i2] = tmp[_i2 + 1];
+                                tmp[_i2 + 1] = tmp_h;
+                                needs_sorting = true; //
+                            }
                         }
                     }
                     self.setState({ items: tmp });
