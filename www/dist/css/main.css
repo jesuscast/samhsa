@@ -19,60 +19,122 @@ body {
   /* This is in order to avoid the annoying color around elements in safari */
   -webkit-tap-highlight-color: transparent; }
 
-.search_bar {
+.warning {
+  text-align: center;
+  border-left: 10px solid #D65B28; }
+  .warning h1 {
+    color: #D65B28; }
+
+.big_btn {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 80%;
+  height: 50px;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  text-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 17px auto 0px auto;
+  background: #D07C4B;
+  color: #fff;
+  border-radius: 20px;
+  box-shadow: 2px 2px 2px #333;
+  cursor: pointer; }
+
+.drug_article h1 {
+  text-transform: uppercase; }
+
+.drug_article h1.drug_name {
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 30px; }
+
+#master .search_bar {
   width: 61%;
   margin: 20px auto 0px auto;
   display: block; }
-  .search_bar span {
+  #master .search_bar span {
     text-align: center;
     width: 100%;
     display: block; }
-  .search_bar input {
+  #master .search_bar input {
     border-radius: 20px;
     border: 0px;
-    height: 30px;
+    padding: 10px 15px 10px 15px;
     margin-top: 10px;
     width: 100%; }
 
-.content {
+#master .content {
   overflow: scroll;
   width: 100%;
-  height: 300px;
-  height: 90%;
   position: absolute; }
-  .content section header {
+  #master .content section article {
+    margin: 15px auto 15px auto;
+    width: 90%; }
+  #master .content section header {
     border-bottom: 1px solid rgba(51, 51, 51, 0.49);
     width: 90%;
     margin: 21px auto 10px auto;
-    height: 24px; }
-  .content section ul {
+    height: 24px;
+    text-transform: capitalize; }
+    #master .content section header .back_btn {
+      width: 51px;
+      float: left;
+      height: 36px;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-flex-direction: row;
+          -ms-flex-direction: row;
+              flex-direction: row;
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -webkit-justify-content: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      position: relative;
+      top: -9px;
+      left: -10px; }
+  #master .content section ul {
     list-style: none;
-    padding: 0px; }
-    .content section ul li {
-      width: 29%;
+    padding: 0px;
+    margin-bottom: 100px; }
+    #master .content section ul li {
+      width: 46%;
       margin: 10px 2% 10px 2%;
-      float: left; }
-      .content section ul li img {
+      float: left;
+      word-wrap: break-word;
+      text-transform: capitalize; }
+      #master .content section ul li img {
         width: 100%; }
-      .content section ul li span {
+      #master .content section ul li span {
         text-align: center;
         display: block; }
 
-footer {
+#master footer {
   height: 10%;
   display: block;
   position: fixed;
   width: 100%;
   bottom: 0px;
   background-color: #97d7ff;
-  min-height: 66px; }
-  footer ul {
+  min-height: 66px;
+  box-shadow: -6px 8px 18px 5px rgba(0, 0, 0, 0.75); }
+  #master footer ul {
     margin: 0px;
     padding: 0px;
     list-style: none;
     width: 100%;
     height: 100%; }
-    footer ul li {
+    #master footer ul li {
       width: 33%;
       float: left;
       font-size: 0.9em;
@@ -93,13 +155,13 @@ footer {
           -ms-flex-pack: center;
               justify-content: center;
       /* This is for horizontal alignment */ }
-      footer ul li i {
+      #master footer ul li i {
         display: block;
         margin-top: 5px;
         color: #FCFFAA;
         position: relative;
         top: -5px; }
-      footer ul li span {
+      #master footer ul li span {
         margin-top: 12px;
         display: block;
         position: relative;

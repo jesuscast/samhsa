@@ -16,91 +16,147 @@ body {
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
-.search_bar {
-	width: 61%;
-    margin: 20px auto 0px auto;
-    display: block;
-	span {
-		text-align: center;
-		width: 100%;
-		display: block;
-	}
-	input {
-	    border-radius: 20px;
-	    border: 0px;
-	    height: 30px;
-	    margin-top: 10px;
-	    width: 100%;
+.warning {
+	text-align: center;
+	border-left: 10px solid $orange;
+	h1 {
+		color: $orange;
 	}
 }
-.content {
-	overflow: scroll;
-	width: 100%;
-	height: 300px;
-	height: 90%;
-	position: absolute;
-	section {
-		header {
-			border-bottom: 1px solid rgba(51, 51, 51, 0.49);
-			width: 90%;
-			margin: 21px auto 10px auto;
-			height: 24px;
+
+.big_btn {
+	 display: flex;
+    width: 80%;
+    height: 50px;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin: 17px auto 0px auto;
+    background: #D07C4B;
+    color: #fff;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px #333;
+    cursor: pointer;
+}
+
+.drug_article {
+	h1 {
+		text-transform: uppercase;
+	}
+	h1.drug_name {
+	    text-transform: uppercase;
+	    text-align: center;
+	    margin-top: 30px;
+	}
+}
+#master {
+	.search_bar {
+		width: 61%;
+	    margin: 20px auto 0px auto;
+	    display: block;
+		span {
+			text-align: center;
+			width: 100%;
+			display: block;
 		}
+		input {
+		    border-radius: 20px;
+		    border: 0px;
+		    padding: 10px 15px 10px 15px;
+		    margin-top: 10px;
+		    width: 100%;
+		}
+	}
+	.content {
+		overflow: scroll;
+		width: 100%;
+		position: absolute;
+		section {
+
+			article {
+				margin: 15px auto 15px auto;
+				width: 90%;
+			}
+			header {
+				border-bottom: 1px solid rgba(51, 51, 51, 0.49);
+				width: 90%;
+				margin: 21px auto 10px auto;
+				height: 24px;
+				text-transform: capitalize;
+				.back_btn {
+					width: 51px;
+					float: left;
+					height: 36px;
+					display: flex;
+					flex-direction: row;
+					align-items: center;
+					justify-content: center;
+					position: relative;
+					top: -9px;
+    				left: -10px;
+				}
+			}
+			ul {
+				list-style: none;
+				padding: 0px;
+				margin-bottom: 100px;
+				li {
+					width: 46%;
+					margin: 10px 2% 10px 2%;
+					float: left;
+					word-wrap: break-word;
+					text-transform: capitalize;
+					img {
+						width: 100%;
+					}
+					span {
+					    text-align: center;
+	  					display: block;
+					}
+				}
+			}
+		}
+	}
+	footer {
+		height: 10%;
+		display: block;
+		position: fixed;
+		width: 100%;
+		bottom: 0px;
+		background-color: rgb(151, 215, 255);
+		min-height: 66px;
+		box-shadow: -6px 8px 18px 5px rgba(0,0,0,0.75);
 		ul {
-			list-style: none;
+			margin: 0px;
 			padding: 0px;
+			list-style: none;
+			width: 100%;
+			height: 100%;
 			li {
-				width: 29%;
-				margin: 10px 2% 10px 2%;
+				width: 33%;
 				float: left;
-				img {
-					width: 100%;
+				font-size: 0.9em;
+				text-align: center;
+				display: flex;
+				flex-direction: column;
+				align-items: center;  /* This is for vertical alignment */
+				height: 100%;
+				cursor: pointer;
+				justify-content: center; /* This is for horizontal alignment */
+				i {
+					display: block;
+					margin-top: 5px;
+					color: #FCFFAA;
+					position: relative;
+					top: -5px;
 				}
 				span {
-				    text-align: center;
-  					display: block;
+					margin-top: 12px;
+					display: block;
+					position: relative;
+					top: -8px;
 				}
-			}
-		}
-	}
-}
-footer {
-	height: 10%;
-	display: block;
-	position: fixed;
-	width: 100%;
-	bottom: 0px;
-	background-color: rgb(151, 215, 255);
-	min-height: 66px;
-	ul {
-		margin: 0px;
-		padding: 0px;
-		list-style: none;
-		width: 100%;
-		height: 100%;
-		li {
-			width: 33%;
-			float: left;
-			font-size: 0.9em;
-			text-align: center;
-			display: flex;
-			flex-direction: column;
-			align-items: center;  /* This is for vertical alignment */
-			height: 100%;
-			cursor: pointer;
-			justify-content: center; /* This is for horizontal alignment */
-			i {
-				display: block;
-				margin-top: 5px;
-				color: #FCFFAA;
-				position: relative;
-				top: -5px;
-			}
-			span {
-				margin-top: 12px;
-				display: block;
-				position: relative;
-				top: -8px;
 			}
 		}
 	}
