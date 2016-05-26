@@ -25,6 +25,16 @@ body {
   .warning h1 {
     color: #D65B28; }
 
+.your_location {
+  display: block;
+  cursor: pointer;
+  text-align: center; }
+  .your_location i {
+    color: #6BAB0B; }
+  .your_location sub {
+    display: block;
+    color: #1981C1; }
+
 .big_btn {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -166,3 +176,14 @@ body {
         display: block;
         position: relative;
         top: -8px; }
+
+.events li {
+  width: 100% !important;
+  margin: 10px 2% 10px 2%;
+  float: left;
+  word-wrap: break-word;
+  text-transform: capitalize;
+  border: 1px solid #333;
+  padding: 5px;
+  position: relative;
+  left: -10px; }

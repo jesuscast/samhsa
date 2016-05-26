@@ -839,3 +839,9 @@
 		window.FastClick = FastClick;
 	}
 }());
+
+
+var initMap = function() {
+    console.log("Connection with maps set up");
+    window.geocoder = new google.maps.Geocoder();
+};
