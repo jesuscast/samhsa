@@ -39,6 +39,29 @@ if ('addEventListener' in document) {
     }, false);
 }
 
+// simple example
+localStorage.setItem('name', 'Pinky');  
+var name = localStorage.getItem('name');  
+console.log(name);
+
+
+let guid = () => {
+    let s4 = () => {
+        return Math.floor((1 + Math.random()) * 0x10000)
+          .toString(16)
+          .substring(1);
+    };
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+    s4() + '-' + s4() + s4() + s4();
+};
+
+if(localStorage.getItem('unique_id') == null) {
+    localStorage.setItem('unique_id', guid());
+}
+window.unique_id = localStorage.getItem('unique_id');
+
+
+
 let FooterSection = React.createClass({
     render: function(){
         let info_selected = "";

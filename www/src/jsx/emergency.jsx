@@ -16,8 +16,8 @@ exports.Emergency = React.createClass({
                 return (
                     <div className="alert_emergency">
                         <div className="inner_c">
-                            <div className="big_btn">Call Emergency Contact</div>
-                            <div className="big_btn">Call Physician</div>
+                            <a href={"tel:"+ localStorage.getItem('physician_number') }><div className="big_btn">Call Emergency Contact</div></a>
+                             <a href={"tel:"+ localStorage.getItem('emergency_number') }><div className="big_btn">Call Physician</div></a>
                             <div className="save big_btn close " onClick={this.changeState.bind(this, 'main_screen') } >Close</div> 
                         </div>
                         <div className="blur"></div>

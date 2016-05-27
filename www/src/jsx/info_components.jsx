@@ -93,7 +93,7 @@ let SpecificDrugScreen = React.createClass({
             <div className="content" id="specific_drug">
                 <section>
                     <header>
-                    <i  onClick={ this.toS } className="fa fa-chevron-circle-left fa-2x"></i> Common Searchsddes
+                    <i  onClick={ this.toS } className="fa fa-chevron-circle-left fa-2x"></i>
                      <emergency.Emergency />
                     </header>
                     <article>
@@ -132,7 +132,7 @@ let DrugScreen = React.createClass({
                      <div className="content" id="specific_drug">
                         <section>
                             <header>
-                            <div className="back_btn"><i  onClick={ this.props.goBack } className="fa fa-chevron-circle-left fa-2x"></i></div>Common Searches
+                            <div className="back_btn"><i  onClick={ this.props.goBack } className="fa fa-chevron-circle-left fa-2x"></i></div>
                              <emergency.Emergency />
                             </header>
                             <article className="drug_article">
