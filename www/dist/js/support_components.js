@@ -25,6 +25,13 @@ var csrfSafeMethod = function csrfSafeMethod(method) {
     );
 };
 
+var guid = function guid() {
+    var s4 = function s4() {
+        return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+    };
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+};
+
 var LocationComponent = React.createClass({
     displayName: 'LocationComponent',
 
@@ -97,11 +104,6 @@ var LocationComponent = React.createClass({
                         React.createElement('i', { className: 'fa fa-location-arrow fa-lg' }),
                         ' ',
                         this.state.location_name
-                    ),
-                    React.createElement(
-                        'sub',
-                        null,
-                        'Click to Change'
                     )
                 );
                 break;
@@ -127,6 +129,75 @@ var LocationComponent = React.createClass({
     }
 });
 
+var MapView = React.createClass({
+    displayName: 'MapView',
+
+    getInitialState: function getInitialState() {
+        return {
+            screen: "main_screen",
+            mapId: guid()
+        };
+    },
+    changeState: function changeState(screen_name) {
+        this.setState({ screen: screen_name });
+    },
+    componentDidMount: function componentDidMount() {
+        console.log('Yes');
+    },
+    componentDidUpdate: function componentDidUpdate() {
+        if (this.state.screen == "view_map") {
+            var position = { lat: this.props.dataLat, lng: this.props.dataLong };
+            var map = new google.maps.Map(document.getElementById(this.state.mapId), {
+                center: position,
+                zoom: 15,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                heading: 90,
+                tilt: 45
+            });
+            var marker = new google.maps.Marker({
+                position: position,
+                map: map,
+                title: 'Map'
+            });
+        } else {
+            alert('NO');
+        }
+    },
+    render: function render() {
+        switch (this.state.screen) {
+            case "main_screen":
+                if (this.props.dataLat != Infinity && this.props.dataLong != Infinity && this.props.dataLat != 'n/a' && this.props.dataLong != 'n/a') {
+                    return React.createElement(
+                        'sub',
+                        { onClick: this.changeState.bind(this, 'view_map') },
+                        React.createElement('i', { className: 'fa fa-map-marker fa-lg' }),
+                        'View Map'
+                    );
+                } else {
+                    return React.createElement('b', null);
+                }
+                break;
+            case "view_map":
+                var coords_string = this.props.dataLat + ", " + this.props.dataLong;
+                return React.createElement(
+                    'div',
+                    { className: 'map_container' },
+                    React.createElement('div', { className: 'map', id: this.state.mapId }),
+                    React.createElement(
+                        'a',
+                        { href: "comgooglemaps://?q=" + coords_string + "&center=" + coords_string + " &zoom=17" },
+                        'Open in Google Maps'
+                    )
+                );
+            default:
+                return React.createElement(
+                    'h1',
+                    null,
+                    'Error'
+                );
+        } // end switch
+    }
+});
 var MeetingsList = React.createClass({
     displayName: 'MeetingsList',
 
@@ -163,7 +234,7 @@ var MeetingsList = React.createClass({
                     null,
                     this.props.itemsData[i].location
                 ),
-                React.createElement('br', null),
+                React.createElement(MapView, { dataLat: this.props.itemsData[i].latitude, dataLong: this.props.itemsData[i].longitude }),
                 React.createElement(
                     'b',
                     null,

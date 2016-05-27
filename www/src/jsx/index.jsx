@@ -41,12 +41,22 @@ if ('addEventListener' in document) {
 
 let FooterSection = React.createClass({
     render: function(){
+        let info_selected = "";
+        let support_selected = "";
+        let social_selected = "";
+        console.log(this.props.screenSelected);
+        if(this.props.screenSelected == "info")
+           { info_selected = "selected";}
+        else if(this.props.screenSelected == "support")
+            {support_selected = "selected";}
+        else
+            {social_selected = "selected";}
         return (
             <footer>
                 <ul>
-                    <li onClick={this.props.onClick.bind(this, 'info')}><span>Info</span><i className="fa fa-thumb-tack fa-2x"></i></li>
-                    <li onClick={this.props.onClick.bind(this, 'support')}><span>Support</span><i className="fa fa-star fa-2x"></i></li>
-                    <li onClick={this.props.onClick.bind(this, 'social')}><span>Social</span><i className="fa fa-group fa-2x"></i></li>
+                    <li onClick={this.props.onClick.bind(this, 'info')}><span>Info</span><i className={"fa fa-thumb-tack fa-2x "+info_selected}></i></li>
+                    <li onClick={this.props.onClick.bind(this, 'support')}><span>Support</span><i className={"fa fa-star fa-2x "+support_selected}></i></li>
+                    <li onClick={this.props.onClick.bind(this, 'social')}><span>Social</span><i className={"fa fa-group fa-2x "+social_selected}></i></li>
                 </ul>
             </footer>
         );
@@ -74,21 +84,21 @@ let App = React.createClass({
                 return (
                 <div>
                     <info_manager.InfoScreen />
-                    <FooterSection onClick={this.changeState} />
+                    <FooterSection onClick={this.changeState} screenSelected = { this.state.screen } />
                 </div>);
                 break;
             case 'support':
                 return(
                 <div>
                     <support_manager.SupportScreen />
-                    <FooterSection onClick={this.changeState} />
+                    <FooterSection onClick={this.changeState} screenSelected = { this.state.screen } />
                 </div>);
                 break;
             case "social":
                 return(
                 <div>
                     <social_manager.SocialScreen />
-                    <FooterSection onClick={this.changeState} />
+                    <FooterSection onClick={this.changeState} screenSelected = { this.state.screen } />
                 </div>);
                 break;
             default:

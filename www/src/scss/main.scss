@@ -29,11 +29,11 @@ body {
 	cursor: pointer;
 	text-align: center;
 	i {
-		color: #6BAB0B;
+		color: $green_icon;
 	}
 	sub {
 		display: block;
-	    color: #1981C1;
+	    color: $blue_small;
 	}
 }
 .support_component {
@@ -140,9 +140,15 @@ body {
 		position: fixed;
 		width: 100%;
 		bottom: 0px;
-		background-color: rgb(151, 215, 255);
+		background-color: $footer_blue;
 		min-height: 66px;
 		box-shadow: -6px 8px 18px 5px rgba(0,0,0,0.75);
+		color: #fff;
+	    font-weight: bold;
+	    text-shadow: 1px 1px 1px #333;
+	    .selected {
+	    	color: $selected_yellow !important;
+	    }
 		ul {
 			margin: 0px;
 			padding: 0px;
@@ -190,5 +196,25 @@ body {
 		padding: 5px;
 		position: relative;
 		left: -10px;
+		sub {
+			display: flex;
+		    flex-direction: row;
+		    align-items: center;
+		    justify-content: center;
+		    margin: 5px;
+		    color: $blue_small;
+		    i {
+		    	margin-right: 10px;
+		    }
+		}
+	}
+	.map {
+		height: 300px;
+	}
+	.map_container a {
+		text-align: center;
+		width: 100%;
+		display: block;
+		margin: 10px 0px 10px 0px;
 	}
 }

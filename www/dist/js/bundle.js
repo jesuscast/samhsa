@@ -44,6 +44,17 @@ var FooterSection = React.createClass({
     displayName: 'FooterSection',
 
     render: function render() {
+        var info_selected = "";
+        var support_selected = "";
+        var social_selected = "";
+        console.log(this.props.screenSelected);
+        if (this.props.screenSelected == "info") {
+            info_selected = "selected";
+        } else if (this.props.screenSelected == "support") {
+            support_selected = "selected";
+        } else {
+            social_selected = "selected";
+        }
         return React.createElement(
             'footer',
             null,
@@ -58,7 +69,7 @@ var FooterSection = React.createClass({
                         null,
                         'Info'
                     ),
-                    React.createElement('i', { className: 'fa fa-thumb-tack fa-2x' })
+                    React.createElement('i', { className: "fa fa-thumb-tack fa-2x " + info_selected })
                 ),
                 React.createElement(
                     'li',
@@ -68,7 +79,7 @@ var FooterSection = React.createClass({
                         null,
                         'Support'
                     ),
-                    React.createElement('i', { className: 'fa fa-star fa-2x' })
+                    React.createElement('i', { className: "fa fa-star fa-2x " + support_selected })
                 ),
                 React.createElement(
                     'li',
@@ -78,7 +89,7 @@ var FooterSection = React.createClass({
                         null,
                         'Social'
                     ),
-                    React.createElement('i', { className: 'fa fa-group fa-2x' })
+                    React.createElement('i', { className: "fa fa-group fa-2x " + social_selected })
                 )
             )
         );
@@ -108,7 +119,7 @@ var App = React.createClass({
                     'div',
                     null,
                     React.createElement(info_manager.InfoScreen, null),
-                    React.createElement(FooterSection, { onClick: this.changeState })
+                    React.createElement(FooterSection, { onClick: this.changeState, screenSelected: this.state.screen })
                 );
                 break;
             case 'support':
@@ -116,7 +127,7 @@ var App = React.createClass({
                     'div',
                     null,
                     React.createElement(support_manager.SupportScreen, null),
-                    React.createElement(FooterSection, { onClick: this.changeState })
+                    React.createElement(FooterSection, { onClick: this.changeState, screenSelected: this.state.screen })
                 );
                 break;
             case "social":
@@ -124,7 +135,7 @@ var App = React.createClass({
                     'div',
                     null,
                     React.createElement(social_manager.SocialScreen, null),
-                    React.createElement(FooterSection, { onClick: this.changeState })
+                    React.createElement(FooterSection, { onClick: this.changeState, screenSelected: this.state.screen })
                 );
                 break;
             default:
@@ -179,7 +190,7 @@ var all_data = {
                     'drug_x': 'data'
                 },
                 warning: 'Super important warning',
-                'pic_address': 'dist/50.png'
+                'pic_address': 'dist/images/methadone.jpg'
             },
             buprenorphine: {
                 side_effects: ['this is my side effect 1', 'this is my second side effect'],
@@ -188,7 +199,7 @@ var all_data = {
                     'drug_x': 'data'
                 },
                 warning: 'Super important warning',
-                'pic_address': 'dist/50.png'
+                'pic_address': 'dist/images/buprenorphine.jpg'
             },
             naltrexone: {
                 side_effects: ['this is my side effect 1', 'this is my second side effect'],
@@ -197,7 +208,7 @@ var all_data = {
                     'drug_x': 'data'
                 },
                 warning: 'Super important warning',
-                'pic_address': 'dist/50.png'
+                'pic_address': 'dist/images/naltrexone.jpg'
             }
         }
     },
@@ -470,22 +481,16 @@ exports.InfoScreen = React.createClass({
                     'div',
                     { className: 'content' },
                     React.createElement(
-                        'div',
-                        { className: 'search_bar' },
-                        React.createElement(
-                            'span',
-                            null,
-                            'Find Substance Information'
-                        ),
-                        React.createElement('input', { type: 'text' })
-                    ),
-                    React.createElement(
                         'section',
                         null,
                         React.createElement(
                             'header',
                             null,
-                            'Common Searches'
+                            React.createElement(
+                                'b',
+                                null,
+                                'Information'
+                            )
                         ),
                         React.createElement(
                             'ul',
@@ -550,6 +555,13 @@ var csrfSafeMethod = function csrfSafeMethod(method) {
     // these HTTP methods do not require CSRF protection
     return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method)
     );
+};
+
+var guid = function guid() {
+    var s4 = function s4() {
+        return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+    };
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
 };
 
 var LocationComponent = React.createClass({
@@ -624,11 +636,6 @@ var LocationComponent = React.createClass({
                         React.createElement('i', { className: 'fa fa-location-arrow fa-lg' }),
                         ' ',
                         this.state.location_name
-                    ),
-                    React.createElement(
-                        'sub',
-                        null,
-                        'Click to Change'
                     )
                 );
                 break;
@@ -654,6 +661,75 @@ var LocationComponent = React.createClass({
     }
 });
 
+var MapView = React.createClass({
+    displayName: 'MapView',
+
+    getInitialState: function getInitialState() {
+        return {
+            screen: "main_screen",
+            mapId: guid()
+        };
+    },
+    changeState: function changeState(screen_name) {
+        this.setState({ screen: screen_name });
+    },
+    componentDidMount: function componentDidMount() {
+        console.log('Yes');
+    },
+    componentDidUpdate: function componentDidUpdate() {
+        if (this.state.screen == "view_map") {
+            var position = { lat: this.props.dataLat, lng: this.props.dataLong };
+            var map = new google.maps.Map(document.getElementById(this.state.mapId), {
+                center: position,
+                zoom: 15,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                heading: 90,
+                tilt: 45
+            });
+            var marker = new google.maps.Marker({
+                position: position,
+                map: map,
+                title: 'Map'
+            });
+        } else {
+            alert('NO');
+        }
+    },
+    render: function render() {
+        switch (this.state.screen) {
+            case "main_screen":
+                if (this.props.dataLat != Infinity && this.props.dataLong != Infinity && this.props.dataLat != 'n/a' && this.props.dataLong != 'n/a') {
+                    return React.createElement(
+                        'sub',
+                        { onClick: this.changeState.bind(this, 'view_map') },
+                        React.createElement('i', { className: 'fa fa-map-marker fa-lg' }),
+                        'View Map'
+                    );
+                } else {
+                    return React.createElement('b', null);
+                }
+                break;
+            case "view_map":
+                var coords_string = this.props.dataLat + ", " + this.props.dataLong;
+                return React.createElement(
+                    'div',
+                    { className: 'map_container' },
+                    React.createElement('div', { className: 'map', id: this.state.mapId }),
+                    React.createElement(
+                        'a',
+                        { href: "comgooglemaps://?q=" + coords_string + "&center=" + coords_string + " &zoom=17" },
+                        'Open in Google Maps'
+                    )
+                );
+            default:
+                return React.createElement(
+                    'h1',
+                    null,
+                    'Error'
+                );
+        } // end switch
+    }
+});
 var MeetingsList = React.createClass({
     displayName: 'MeetingsList',
 
@@ -690,7 +766,7 @@ var MeetingsList = React.createClass({
                     null,
                     this.props.itemsData[i].location
                 ),
-                React.createElement('br', null),
+                React.createElement(MapView, { dataLat: this.props.itemsData[i].latitude, dataLong: this.props.itemsData[i].longitude }),
                 React.createElement(
                     'b',
                     null,

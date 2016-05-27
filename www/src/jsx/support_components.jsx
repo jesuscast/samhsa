@@ -22,6 +22,16 @@ let csrfSafeMethod = function(method) {
     return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
 };
 
+let guid = () => {
+    let s4 = () => {
+        return Math.floor((1 + Math.random()) * 0x10000)
+          .toString(16)
+          .substring(1);
+    };
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+    s4() + '-' + s4() + s4() + s4();
+};
+
 
 let LocationComponent = React.createClass({
     getInitialState: function(){
@@ -87,7 +97,7 @@ let LocationComponent = React.createClass({
                 return (
                     <div className="your_location" onClick={ this.changeState.bind(this, "change_location") }>
                         <span>Closest to <i className="fa fa-location-arrow fa-lg"></i> { this.state.location_name }</span>
-                        <sub>Click to Change</sub>
+                        { /*<sub>Click to Change.</sub>*/ }
                     </div>
                 );
                 break;
@@ -105,6 +115,61 @@ let LocationComponent = React.createClass({
     }
 });
 
+let MapView = React.createClass({
+    getInitialState: function(){
+        return {
+            screen: "main_screen",
+            mapId: guid()
+        };
+    },
+    changeState: function(screen_name){
+        this.setState({ screen: screen_name });
+    },
+    componentDidMount: function(){
+        console.log('Yes');
+    },
+    componentDidUpdate: function(){
+        if(this.state.screen == "view_map") {
+            let position = { lat: this.props.dataLat, lng: this.props.dataLong }
+            let map = new google.maps.Map(document.getElementById(this.state.mapId), {
+                center: position,
+                zoom: 15,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                heading: 90,
+                tilt: 45
+              });
+             let marker = new google.maps.Marker({
+                position: position,
+                map: map,
+                title: 'Map'
+              });
+        } else {
+            alert('NO');
+        }
+    },
+    render: function(){
+        switch(this.state.screen){
+            case "main_screen":
+                if(this.props.dataLat != Infinity && this.props.dataLong != Infinity && this.props.dataLat != 'n/a' && this.props.dataLong != 'n/a' ){
+                    return (
+                        <sub onClick={this.changeState.bind(this, 'view_map')}><i className="fa fa-map-marker fa-lg"></i>View Map</sub>
+                    );
+                }
+                else {
+                    return (<b></b>);
+                }
+                break; 
+            case "view_map":
+                let coords_string =  this.props.dataLat + ", " + this.props.dataLong;
+                return (<div className="map_container">
+                    <div className="map" id={ this.state.mapId }></div>
+                    <a href={"comgooglemaps://?q="+coords_string+"&center=" +coords_string +" &zoom=17"}>Open in Google Maps</a>
+                    </div>);
+            default:
+                return (<h1>Error</h1>);
+        } // end switch
+    }
+});
 let MeetingsList  = React.createClass({
     render: function(){
         let items_jsx = [];
@@ -114,7 +179,8 @@ let MeetingsList  = React.createClass({
                 <li>
                     <span className="title_event">{this.props.itemsData[i].name}</span>
                     <b>When</b><span>{ this.props.itemsData[i].day+', '+this.props.itemsData[i].time }</span><br />
-                    <b>Where</b><span>{ this.props.itemsData[i].location }</span><br />
+                    <b>Where</b><span>{ this.props.itemsData[i].location }</span>
+                    <MapView dataLat = { this.props.itemsData[i].latitude } dataLong = { this.props.itemsData[i].longitude }/>
                     <b>Contact:</b><span>{ this.props.itemsData[i].contact }</span><br />
                 </li>
             );

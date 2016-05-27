@@ -135,9 +135,14 @@ body {
   position: fixed;
   width: 100%;
   bottom: 0px;
-  background-color: #97d7ff;
+  background-color: #1BA7FF;
   min-height: 66px;
-  box-shadow: -6px 8px 18px 5px rgba(0, 0, 0, 0.75); }
+  box-shadow: -6px 8px 18px 5px rgba(0, 0, 0, 0.75);
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px #333; }
+  #master footer .selected {
+    color: #F6FF00 !important; }
   #master footer ul {
     margin: 0px;
     padding: 0px;
@@ -187,3 +192,29 @@ body {
   padding: 5px;
   position: relative;
   left: -10px; }
+  .events li sub {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin: 5px;
+    color: #1981C1; }
+    .events li sub i {
+      margin-right: 10px; }
+
+.events .map {
+  height: 300px; }
+
+.events .map_container a {
+  text-align: center;
+  width: 100%;
+  display: block;
+  margin: 10px 0px 10px 0px; }

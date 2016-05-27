@@ -43,6 +43,17 @@ var FooterSection = React.createClass({
     displayName: 'FooterSection',
 
     render: function render() {
+        var info_selected = "";
+        var support_selected = "";
+        var social_selected = "";
+        console.log(this.props.screenSelected);
+        if (this.props.screenSelected == "info") {
+            info_selected = "selected";
+        } else if (this.props.screenSelected == "support") {
+            support_selected = "selected";
+        } else {
+            social_selected = "selected";
+        }
         return React.createElement(
             'footer',
             null,
@@ -57,7 +68,7 @@ var FooterSection = React.createClass({
                         null,
                         'Info'
                     ),
-                    React.createElement('i', { className: 'fa fa-thumb-tack fa-2x' })
+                    React.createElement('i', { className: "fa fa-thumb-tack fa-2x " + info_selected })
                 ),
                 React.createElement(
                     'li',
@@ -67,7 +78,7 @@ var FooterSection = React.createClass({
                         null,
                         'Support'
                     ),
-                    React.createElement('i', { className: 'fa fa-star fa-2x' })
+                    React.createElement('i', { className: "fa fa-star fa-2x " + support_selected })
                 ),
                 React.createElement(
                     'li',
@@ -77,7 +88,7 @@ var FooterSection = React.createClass({
                         null,
                         'Social'
                     ),
-                    React.createElement('i', { className: 'fa fa-group fa-2x' })
+                    React.createElement('i', { className: "fa fa-group fa-2x " + social_selected })
                 )
             )
         );
@@ -107,7 +118,7 @@ var App = React.createClass({
                     'div',
                     null,
                     React.createElement(info_manager.InfoScreen, null),
-                    React.createElement(FooterSection, { onClick: this.changeState })
+                    React.createElement(FooterSection, { onClick: this.changeState, screenSelected: this.state.screen })
                 );
                 break;
             case 'support':
@@ -115,7 +126,7 @@ var App = React.createClass({
                     'div',
                     null,
                     React.createElement(support_manager.SupportScreen, null),
-                    React.createElement(FooterSection, { onClick: this.changeState })
+                    React.createElement(FooterSection, { onClick: this.changeState, screenSelected: this.state.screen })
                 );
                 break;
             case "social":
@@ -123,7 +134,7 @@ var App = React.createClass({
                     'div',
                     null,
                     React.createElement(social_manager.SocialScreen, null),
-                    React.createElement(FooterSection, { onClick: this.changeState })
+                    React.createElement(FooterSection, { onClick: this.changeState, screenSelected: this.state.screen })
                 );
                 break;
             default:

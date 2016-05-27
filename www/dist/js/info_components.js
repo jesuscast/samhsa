@@ -10,7 +10,7 @@ var all_data = {
                     'drug_x': 'data'
                 },
                 warning: 'Super important warning',
-                'pic_address': 'dist/50.png'
+                'pic_address': 'dist/images/methadone.jpg'
             },
             buprenorphine: {
                 side_effects: ['this is my side effect 1', 'this is my second side effect'],
@@ -19,7 +19,7 @@ var all_data = {
                     'drug_x': 'data'
                 },
                 warning: 'Super important warning',
-                'pic_address': 'dist/50.png'
+                'pic_address': 'dist/images/buprenorphine.jpg'
             },
             naltrexone: {
                 side_effects: ['this is my side effect 1', 'this is my second side effect'],
@@ -28,7 +28,7 @@ var all_data = {
                     'drug_x': 'data'
                 },
                 warning: 'Super important warning',
-                'pic_address': 'dist/50.png'
+                'pic_address': 'dist/images/naltrexone.jpg'
             }
         }
     },
@@ -301,22 +301,16 @@ exports.InfoScreen = React.createClass({
                     'div',
                     { className: 'content' },
                     React.createElement(
-                        'div',
-                        { className: 'search_bar' },
-                        React.createElement(
-                            'span',
-                            null,
-                            'Find Substance Information'
-                        ),
-                        React.createElement('input', { type: 'text' })
-                    ),
-                    React.createElement(
                         'section',
                         null,
                         React.createElement(
                             'header',
                             null,
-                            'Common Searches'
+                            React.createElement(
+                                'b',
+                                null,
+                                'Information'
+                            )
                         ),
                         React.createElement(
                             'ul',

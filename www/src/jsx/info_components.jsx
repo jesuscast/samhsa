@@ -11,7 +11,7 @@ let all_data = {
                     'drug_x': 'data'
                 },
                 warning: 'Super important warning',
-                'pic_address': 'dist/50.png',
+                'pic_address': 'dist/images/methadone.jpg',
             },
             buprenorphine: {
                 side_effects: [
@@ -23,7 +23,7 @@ let all_data = {
                     'drug_x': 'data'
                 },
                 warning: 'Super important warning',
-                'pic_address': 'dist/50.png',
+                'pic_address': 'dist/images/buprenorphine.jpg',
             },
             naltrexone: {
                 side_effects: [
@@ -35,7 +35,7 @@ let all_data = {
                     'drug_x': 'data'
                 },
                 warning: 'Super important warning',
-                'pic_address': 'dist/50.png',
+                'pic_address': 'dist/images/naltrexone.jpg',
             },
         },
     },
@@ -181,13 +181,9 @@ exports.InfoScreen = React.createClass({
             case "main_screen":
                 return(
                     <div className="content">
-                        <div className="search_bar">
-                            <span>Find Substance Information</span>
-                            <input type="text"></input>
-                        </div>
                         <section>
                             <header>
-                            Common Searches
+                                <b>Information</b>
                             </header>
                             <ul>
                                 { list_elements }
