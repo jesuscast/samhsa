@@ -3,20 +3,29 @@ let all_data = {
         drugs: {
             methadone: {
                 side_effects: [
-                    'this is my side effect 1',
-                    'this is my second side effect'
+                    {text: "Experience difficulty breathing or shallow breathing", image: ""},
+                    {text: "Feel lightheaded or faint", image: "./dist/images/faint.png"},
+                    {text: "Feel chest pain", image: "./dist/images/chest_pain.png"},
+                    {text: "Experience a fast or pounding heartbeat", image: "./dist/images/heart.png"},
+                    {text: "Experience hives or a rash; swelling of the face, lips, tongue, or throat", image: "./dist/images/hives.png"},
+                    
+                    {text: "Experience hallucinations or confusion", image: "./dist/images/confusion.png"}
                 ],
                 interactions: {
                     'other_drug': 'data',
                     'drug_x': 'data'
                 },
-                warning: 'Super important warning',
+                warning: 'Never use combination with alvimopan, itraconazole, ketoconazole, rasagiline, selegiline',
                 'pic_address': 'dist/images/methadone.jpg',
             },
             buprenorphine: {
                 side_effects: [
-                    'this is my side effect 1',
-                    'this is my second side effect'
+                    {text: "Nausea, vomiting, and constipation", image: './dist/images/vomiting.png'},
+                    {text: "Muscle aches and cramps", image: './dist/images/body_pain.png'},
+                    {text: "Cravings", image: ''},
+                    {text: "Inability to sleep", image: './dist/images/awake.png'},
+                    {text: "Distress and irritability", image: './dist/images/headache.png'},
+                    {text: "Fever", image: './dist/images/fever.png'},
                 ],
                 interactions: {
                     'other_drug': 'data',
@@ -26,9 +35,13 @@ let all_data = {
                 'pic_address': 'dist/images/buprenorphine.jpg',
             },
             naltrexone: {
-                side_effects: [
-                    'this is my side effect 1',
-                    'this is my second side effect'
+                side_effects:  [
+                    {text: "Headache", image: './dist/images/headache.png'},
+                    {text: "Diarrhea", image: './dist/images/diarrhea.png'},
+                    {text: "Upset stomach or vomiting", image: './dist/images/vomiting.png'},
+                    {text: "Sleep problems/tiredness", image: './dist/images/awake.png'},
+                    {text: "Nervousness", image: ''},
+                    {text: "Joint or muscle pain", image: './dist/images/body_pain.png' }
                 ],
                 interactions: {
                     'other_drug': 'data',
@@ -43,7 +56,11 @@ let all_data = {
     social: ''
 };
 
+/*
 
+License for icons:
+https://icons8.com/license/
+*/
 let SpecificDrugScreen = React.createClass({
     render: function(){
         return (
@@ -103,7 +120,7 @@ let DrugScreen = React.createClass({
             case "side_effects":
                 let side_effects = [];
                 for(let i = 0; i < this.props.drugInfo.side_effects.length; i++){
-                    side_effects.push(<li>{this.props.drugInfo.side_effects[i]}</li>);
+                    side_effects.push(<li><img src={this.props.drugInfo.side_effects[i].image} />{this.props.drugInfo.side_effects[i].text}</li>);
                 }
                 return(
                      <div className="content" id="specific_drug">
@@ -116,6 +133,7 @@ let DrugScreen = React.createClass({
                             </article>
                             <ul>
                                 { side_effects }
+                                <div className="clear"></div>
                             </ul>
                             <div className="clear"></div>
                         </section>

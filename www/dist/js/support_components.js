@@ -160,7 +160,7 @@ var MapView = React.createClass({
                 title: 'Map'
             });
         } else {
-            alert('NO');
+            // alert('NO');
         }
     },
     render: function render() {

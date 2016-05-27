@@ -122,7 +122,20 @@ body {
       margin: 10px 2% 10px 2%;
       float: left;
       word-wrap: break-word;
-      text-transform: capitalize; }
+      text-transform: capitalize;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-flex-direction: column;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -webkit-justify-content: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      min-height: 150px; }
       #master .content section ul li img {
         width: 100%; }
       #master .content section ul li span {
