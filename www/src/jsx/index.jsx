@@ -54,7 +54,7 @@ let FooterSection = React.createClass({
         return (
             <footer>
                 <ul>
-                    <li onClick={this.props.onClick.bind(this, 'info')}><span>Info</span><i className={"fa fa-thumb-tack fa-2x "+info_selected}></i></li>
+                    <li onClick={this.props.onClick.bind(this, 'info')}><span>Info</span><i className={"fa fa-info fa-2x "+info_selected}></i></li>
                     <li onClick={this.props.onClick.bind(this, 'support')}><span>Support</span><i className={"fa fa-star fa-2x "+support_selected}></i></li>
                     <li onClick={this.props.onClick.bind(this, 'social')}><span>Social</span><i className={"fa fa-group fa-2x "+social_selected}></i></li>
                 </ul>

@@ -68,7 +68,7 @@ var FooterSection = React.createClass({
                         null,
                         'Info'
                     ),
-                    React.createElement('i', { className: "fa fa-thumb-tack fa-2x " + info_selected })
+                    React.createElement('i', { className: "fa fa-info fa-2x " + info_selected })
                 ),
                 React.createElement(
                     'li',
