@@ -290,6 +290,9 @@ label {
   .emergency i {
     margin-right: 5px; }
 
+.alert_emergency a {
+  text-decoration: none; }
+
 .alert_emergency .inner_c {
   z-index: 99;
   position: absolute;
@@ -317,3 +320,6 @@ label {
 
 .full {
   min-height: 100%; }
+
+.last_element_i {
+  margin-bottom: 100px !important; }
