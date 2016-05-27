@@ -4,31 +4,36 @@ var all_data = {
     info: {
         drugs: {
             methadone: {
-                side_effects: [{ text: "Experience difficulty breathing or shallow breathing", image: "" }, { text: "Feel lightheaded or faint", image: "./dist/images/faint.png" }, { text: "Feel chest pain", image: "./dist/images/chest_pain.png" }, { text: "Experience a fast or pounding heartbeat", image: "./dist/images/heart.png" }, { text: "Experience hives or a rash; swelling of the face, lips, tongue, or throat", image: "./dist/images/hives.png" }, { text: "Experience hallucinations or confusion", image: "./dist/images/confusion.png" }],
+                side_effects: [{ text_s: "Experience difficulty breathing or shallow breathing", image: "" }, { text_s: "Feel lightheaded or faint", image: "./dist/images/faint.png" }, { text_s: "Feel chest pain", image: "./dist/images/chest_pain.png" }, { text_s: "Experience a fast or pounding heartbeat", image: "./dist/images/heart.png" }, { text_s: "Experience hallucinations or confusion", image: "./dist/images/confusion.png" }, { text_s: "Experience hives or a rash; swelling of the face, lips, tongue, or throat", image: "./dist/images/hives.png" }],
                 interactions: {
-                    'other_drug': 'data',
-                    'drug_x': 'data'
+                    'Fights against methadone, causing withdrawal symptoms.': 'Buprenorphine (Buprenex®), butorphanol (Stadol®), dezocine (Dalgan®), nalbuphine (Nubain®), pentazocine (Talwin®), and tramadol (Ultram®)',
+                    'May decrease methadone levels.': 'St. Johns wort or large amounts of vitamin C',
+                    'Can make the usual methadone dose feel too weak': 'Cocaine abuse or chronic use of alcoho',
+                    'Decrease in breathing ability and blood pressure as well as death.': 'Methadone, Buprenorphine, or Naltrexone with Benzodiazepines , Benzodiazepine Analogs or Barbiturates.'
                 },
-                warning: 'Never use combination with alvimopan, itraconazole, ketoconazole, rasagiline, selegiline',
-                'pic_address': 'dist/images/methadone.jpg'
+                warning: ["Never use combination with alvimopan, itraconazole, ketoconazole, rasagiline, selegiline."],
+                'pic_address': 'dist/images/methadone.jpg',
+                text: ["Talk to your doctor about eating grapefruit and drinking grapefruit juice while taking this medicine", "Do not take a double dose to make up for a missed one", "Methadone comes as a tablet, a dispersible (can be dissolved in liquid) tablet , a solution (liquid), and a concentrated solution to take by mouth."]
             },
             buprenorphine: {
-                side_effects: [{ text: "Nausea, vomiting, and constipation", image: './dist/images/vomiting.png' }, { text: "Muscle aches and cramps", image: './dist/images/body_pain.png' }, { text: "Cravings", image: '' }, { text: "Inability to sleep", image: './dist/images/awake.png' }, { text: "Distress and irritability", image: './dist/images/headache.png' }, { text: "Fever", image: './dist/images/fever.png' }],
+                side_effects: [{ text_s: "Nausea, vomiting, and constipation", image: './dist/images/vomiting.png' }, { text_s: "Muscle aches and cramps", image: './dist/images/body_pain.png' }, { text_s: "Cravings", image: '' }, { text_s: "Inability to sleep", image: './dist/images/awake.png' }, { text_s: "Distress and irritability", image: './dist/images/headache.png' }, { text_s: "Fever", image: './dist/images/fever.png' }],
                 interactions: {
-                    'other_drug': 'data',
-                    'drug_x': 'data'
+                    'Decrease in breathing ability and blood pressure as well as death.': 'Methadone, Buprenorphine, or Naltrexone with Benzodiazepines , Benzodiazepine Analogs or Barbiturates.',
+                    'Can add to the breathing difficulties that can be caused by this medication.': 'Alcohol'
                 },
-                warning: 'Super important warning',
-                'pic_address': 'dist/images/buprenorphine.jpg'
+                warning: ["Alcohol can add to the breathing difficulties that can be caused by this medication."],
+                'pic_address': 'dist/images/buprenorphine.jpg',
+                text: ["Do not stop taking or using buprenorphine or buprenorphine and naloxone without talking to your doctor.", "Do not take or apply a double dose to make up for a missed one.", "Place the tablets under your tongue until they completely melt.", "Do not eat, drink, or talk until the tablet dissolves completely.", "Do not chew the tablets or swallow them whole."]
             },
             naltrexone: {
-                side_effects: [{ text: "Headache", image: './dist/images/headache.png' }, { text: "Diarrhea", image: './dist/images/diarrhea.png' }, { text: "Upset stomach or vomiting", image: './dist/images/vomiting.png' }, { text: "Sleep problems/tiredness", image: './dist/images/awake.png' }, { text: "Nervousness", image: '' }, { text: "Joint or muscle pain", image: './dist/images/body_pain.png' }],
+                side_effects: [{ text_s: "Headache", image: './dist/images/headache.png' }, { text_s: "Diarrhea", image: './dist/images/diarrhea.png' }, { text_s: "Upset stomach or vomiting", image: './dist/images/vomiting.png' }, { text_s: "Sleep problems/tiredness", image: './dist/images/awake.png' }, { text_s: "Nervousness", image: '' }, { text_s: "Joint or muscle pain", image: './dist/images/body_pain.png' }],
                 interactions: {
-                    'other_drug': 'data',
-                    'drug_x': 'data'
+                    'Decrease in breathing ability and blood pressure as well as death.': 'Methadone, Buprenorphine, or Naltrexone with Benzodiazepines , Benzodiazepine Analogs or Barbiturates.',
+                    'carboxymethylcellulose or PLG': ''
                 },
-                warning: 'Super important warning',
-                'pic_address': 'dist/images/naltrexone.jpg'
+                warning: ["Naltrexone blocks a high from opiods. DO NOT take large amounts of opioids to try to overcome this! You could DIE!", "Liver injury: Naltrexone may cause liver injury.", "Allergic pneumonia: It may cause an allergic pneumonia. "],
+                'pic_address': 'dist/images/naltrexone.jpg',
+                text: ["Naltrexone injection comes as a solution (liquid) to be given by injection into the muscle of the buttocks by a healthcare provider once every 4 weeks.", "Naltrexone injection will not prevent withdrawal symptoms that may occur when you stop drinking alcohol after drinking large amounts for a long time or when you stop using opiate medications or street drugs."]
             }
         }
     },
@@ -99,6 +104,22 @@ var DrugScreen = React.createClass({
     render: function render() {
         switch (this.state.screen) {
             case "main_screen":
+                var text_inside = [];
+                for (var i = 0; i < this.props.drugInfo.text.length; i++) {
+                    text_inside.push(React.createElement(
+                        "li",
+                        null,
+                        this.props.drugInfo.text[i]
+                    ));
+                }
+                var warning_inside = [];
+                for (var _i = 0; _i < this.props.drugInfo.warning.length; _i++) {
+                    warning_inside.push(React.createElement(
+                        "li",
+                        null,
+                        this.props.drugInfo.warning[_i]
+                    ));
+                }
                 return React.createElement(
                     "div",
                     { className: "content", id: "specific_drug" },
@@ -132,9 +153,9 @@ var DrugScreen = React.createClass({
                                     " Warning!! "
                                 ),
                                 React.createElement(
-                                    "p",
-                                    null,
-                                    this.props.drugInfo.warning
+                                    "ul",
+                                    { className: "regular_list" },
+                                    warning_inside
                                 )
                             ),
                             React.createElement(
@@ -147,7 +168,16 @@ var DrugScreen = React.createClass({
                                 { className: "big_btn", onClick: this.changeState.bind(this, "interactions") },
                                 "Interactions with Other Drugs"
                             ),
-                            React.createElement("p", null)
+                            React.createElement(
+                                "div",
+                                { className: "top_m last_element" },
+                                "Things to know",
+                                React.createElement(
+                                    "ul",
+                                    { className: "regular_list" },
+                                    text_inside
+                                )
+                            )
                         ),
                         React.createElement("div", { className: "clear" })
                     )
@@ -155,12 +185,12 @@ var DrugScreen = React.createClass({
                 break;
             case "side_effects":
                 var side_effects = [];
-                for (var i = 0; i < this.props.drugInfo.side_effects.length; i++) {
+                for (var _i2 = 0; _i2 < this.props.drugInfo.side_effects.length; _i2++) {
                     side_effects.push(React.createElement(
                         "li",
                         null,
-                        React.createElement("img", { src: this.props.drugInfo.side_effects[i].image }),
-                        this.props.drugInfo.side_effects[i].text
+                        React.createElement("img", { src: this.props.drugInfo.side_effects[_i2].image }),
+                        this.props.drugInfo.side_effects[_i2].text_s
                     ));
                 }
                 return React.createElement(
@@ -205,16 +235,16 @@ var DrugScreen = React.createClass({
             case "interactions":
                 var interactions = [];
                 var o_k = Object.keys(this.props.drugInfo.interactions);
-                for (var _i = 0; _i < o_k.length; _i++) {
+                for (var _i3 = 0; _i3 < o_k.length; _i3++) {
                     interactions.push(React.createElement(
                         "li",
                         null,
                         React.createElement(
                             "b",
                             null,
-                            o_k[_i]
+                            o_k[_i3]
                         ),
-                        this.props.drugInfo.interactions[o_k[_i]]
+                        this.props.drugInfo.interactions[o_k[_i3]]
                     ));
                 }
                 window.interactions = this.props.drugInfo.interactions;
@@ -317,6 +347,29 @@ exports.InfoScreen = React.createClass({
                                 "b",
                                 null,
                                 "Information"
+                            )
+                        ),
+                        React.createElement(
+                            "div",
+                            { className: "warning" },
+                            React.createElement(
+                                "h1",
+                                null,
+                                " Warning!! "
+                            ),
+                            React.createElement(
+                                "ul",
+                                { className: "regular_list" },
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    "In case of overdose, call your local poison control center at 1-800-222-1222"
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    "If the victim has collapsed or is not breathing, call local emergency services at 911"
+                                )
                             )
                         ),
                         React.createElement(
