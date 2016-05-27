@@ -1,3 +1,4 @@
+const emergency = require('./emergency.js');
 let all_data = {
     info: {
         drugs: {
@@ -93,6 +94,7 @@ let SpecificDrugScreen = React.createClass({
                 <section>
                     <header>
                     <i  onClick={ this.toS } className="fa fa-chevron-circle-left fa-2x"></i> Common Searchsddes
+                     <emergency.Emergency />
                     </header>
                     <article>
                         <h1 className="warning"> Warning!! </h1>
@@ -131,6 +133,7 @@ let DrugScreen = React.createClass({
                         <section>
                             <header>
                             <div className="back_btn"><i  onClick={ this.props.goBack } className="fa fa-chevron-circle-left fa-2x"></i></div>Common Searches
+                             <emergency.Emergency />
                             </header>
                             <article className="drug_article">
                                 <h1 className="drug_name">{ this.props.drugName }</h1>
@@ -164,6 +167,7 @@ let DrugScreen = React.createClass({
                         <section>
                             <header>
                             <div className="back_btn"><i  onClick={ this.changeState.bind(this, "main_screen") } className="fa fa-chevron-circle-left fa-2x"></i></div><b>{ this.props.drugName }</b>
+                             <emergency.Emergency />
                             </header>
                             <article className="drug_article">
                                 <h1 className="drug_name">Side Effects</h1>
@@ -189,6 +193,7 @@ let DrugScreen = React.createClass({
                         <section>
                             <header>
                             <div className="back_btn"><i  onClick={ this.changeState.bind(this, "main_screen") } className="fa fa-chevron-circle-left fa-2x"></i></div><b>{ this.props.drugName }</b>
+                             <emergency.Emergency />
                             </header>
                             <article className="drug_article">
                                 <h1 className="drug_name">Interactions</h1>
@@ -239,7 +244,7 @@ exports.InfoScreen = React.createClass({
                         <section>
                             <header>
                                 <b>Information</b>
-                                
+                                 <emergency.Emergency />
                             </header>
                             <div className="warning">
                                     <h1> Warning!! </h1>

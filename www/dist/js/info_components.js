@@ -1,5 +1,6 @@
 "use strict";
 
+var emergency = require('./emergency.js');
 var all_data = {
     info: {
         drugs: {
@@ -60,7 +61,8 @@ var SpecificDrugScreen = React.createClass({
                     "header",
                     null,
                     React.createElement("i", { onClick: this.toS, className: "fa fa-chevron-circle-left fa-2x" }),
-                    " Common Searchsddes"
+                    " Common Searchsddes",
+                    React.createElement(emergency.Emergency, null)
                 ),
                 React.createElement(
                     "article",
@@ -134,7 +136,8 @@ var DrugScreen = React.createClass({
                                 { className: "back_btn" },
                                 React.createElement("i", { onClick: this.props.goBack, className: "fa fa-chevron-circle-left fa-2x" })
                             ),
-                            "Common Searches"
+                            "Common Searches",
+                            React.createElement(emergency.Emergency, null)
                         ),
                         React.createElement(
                             "article",
@@ -211,7 +214,8 @@ var DrugScreen = React.createClass({
                                 "b",
                                 null,
                                 this.props.drugName
-                            )
+                            ),
+                            React.createElement(emergency.Emergency, null)
                         ),
                         React.createElement(
                             "article",
@@ -266,7 +270,8 @@ var DrugScreen = React.createClass({
                                 "b",
                                 null,
                                 this.props.drugName
-                            )
+                            ),
+                            React.createElement(emergency.Emergency, null)
                         ),
                         React.createElement(
                             "article",
@@ -347,7 +352,8 @@ exports.InfoScreen = React.createClass({
                                 "b",
                                 null,
                                 "Information"
-                            )
+                            ),
+                            React.createElement(emergency.Emergency, null)
                         ),
                         React.createElement(
                             "div",

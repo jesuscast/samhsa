@@ -5,7 +5,7 @@ var test_in_cordova = false;
 var social_manager = require('./social_components.js');
 var support_manager = require('./support_components.js');
 var info_manager = require('./info_components.js');
-
+var emergency = require('./emergency.js');
 /*
 
 https://gist.github.com/amolk/1599412
@@ -86,9 +86,9 @@ var FooterSection = React.createClass({
                     React.createElement(
                         'span',
                         null,
-                        'Social'
+                        'Profile'
                     ),
-                    React.createElement('i', { className: "fa fa-group fa-2x " + social_selected })
+                    React.createElement('i', { className: "fa fa-user fa-2x " + social_selected })
                 )
             )
         );
@@ -105,7 +105,7 @@ var App = React.createClass({
                 'home'
         */
         return {
-            screen: 'info'
+            screen: 'social'
         };
     },
     changeState: function changeState(future_state) {

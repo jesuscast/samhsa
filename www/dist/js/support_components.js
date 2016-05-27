@@ -1,7 +1,7 @@
 'use strict';
 
 window.geocoder;
-
+var emergency = require('./emergency.js');
 var meetings_url = 'https://samhsa-ebdef.firebaseio.com/data/';
 
 var getCookie = function getCookie(name) {
@@ -360,7 +360,8 @@ exports.SupportScreen = React.createClass({
                                 'b',
                                 null,
                                 'support'
-                            )
+                            ),
+                            React.createElement(emergency.Emergency, null)
                         ),
                         React.createElement(
                             'article',

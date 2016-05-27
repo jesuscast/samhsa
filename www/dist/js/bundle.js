@@ -1,4 +1,63 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+"use strict";
+
+exports.Emergency = React.createClass({
+    displayName: "Emergency",
+
+    getInitialState: function getInitialState() {
+        return {
+            screen: "main_screen"
+        };
+    },
+    changeState: function changeState(screen_name) {
+        this.setState({ screen: screen_name });
+    },
+    render: function render() {
+        switch (this.state.screen) {
+            case "main_screen":
+                return React.createElement(
+                    "span",
+                    { className: "emergency", onClick: this.changeState.bind(this, 'alert') },
+                    React.createElement("i", { className: "fa fa-warning fa-lg " }),
+                    "Emergency"
+                );
+                break;
+            case "alert":
+                return React.createElement(
+                    "div",
+                    { className: "alert_emergency" },
+                    React.createElement(
+                        "div",
+                        { className: "inner_c" },
+                        React.createElement(
+                            "div",
+                            { className: "big_btn" },
+                            "Call Emergency Contact"
+                        ),
+                        React.createElement(
+                            "div",
+                            { className: "big_btn" },
+                            "Call Physician"
+                        ),
+                        React.createElement(
+                            "div",
+                            { className: "save big_btn close ", onClick: this.changeState.bind(this, 'main_screen') },
+                            "Close"
+                        )
+                    ),
+                    React.createElement("div", { className: "blur" })
+                );
+                break;
+            default:
+                return React.createElement(
+                    "h1",
+                    null,
+                    "Error"
+                );
+        }
+    }
+});
+},{}],2:[function(require,module,exports){
 'use strict';
 
 var test_in_cordova = false;
@@ -6,7 +65,7 @@ var test_in_cordova = false;
 var social_manager = require('./social_components.js');
 var support_manager = require('./support_components.js');
 var info_manager = require('./info_components.js');
-
+var emergency = require('./emergency.js');
 /*
 
 https://gist.github.com/amolk/1599412
@@ -87,9 +146,9 @@ var FooterSection = React.createClass({
                     React.createElement(
                         'span',
                         null,
-                        'Social'
+                        'Profile'
                     ),
-                    React.createElement('i', { className: "fa fa-group fa-2x " + social_selected })
+                    React.createElement('i', { className: "fa fa-user fa-2x " + social_selected })
                 )
             )
         );
@@ -106,7 +165,7 @@ var App = React.createClass({
                 'home'
         */
         return {
-            screen: 'info'
+            screen: 'social'
         };
     },
     changeState: function changeState(future_state) {
@@ -177,9 +236,10 @@ var app = {
 };
 
 if (test_in_cordova) app.initialize();
-},{"./info_components.js":2,"./social_components.js":3,"./support_components.js":4}],2:[function(require,module,exports){
+},{"./emergency.js":1,"./info_components.js":3,"./social_components.js":4,"./support_components.js":5}],3:[function(require,module,exports){
 "use strict";
 
+var emergency = require('./emergency.js');
 var all_data = {
     info: {
         drugs: {
@@ -240,7 +300,8 @@ var SpecificDrugScreen = React.createClass({
                     "header",
                     null,
                     React.createElement("i", { onClick: this.toS, className: "fa fa-chevron-circle-left fa-2x" }),
-                    " Common Searchsddes"
+                    " Common Searchsddes",
+                    React.createElement(emergency.Emergency, null)
                 ),
                 React.createElement(
                     "article",
@@ -314,7 +375,8 @@ var DrugScreen = React.createClass({
                                 { className: "back_btn" },
                                 React.createElement("i", { onClick: this.props.goBack, className: "fa fa-chevron-circle-left fa-2x" })
                             ),
-                            "Common Searches"
+                            "Common Searches",
+                            React.createElement(emergency.Emergency, null)
                         ),
                         React.createElement(
                             "article",
@@ -391,7 +453,8 @@ var DrugScreen = React.createClass({
                                 "b",
                                 null,
                                 this.props.drugName
-                            )
+                            ),
+                            React.createElement(emergency.Emergency, null)
                         ),
                         React.createElement(
                             "article",
@@ -446,7 +509,8 @@ var DrugScreen = React.createClass({
                                 "b",
                                 null,
                                 this.props.drugName
-                            )
+                            ),
+                            React.createElement(emergency.Emergency, null)
                         ),
                         React.createElement(
                             "article",
@@ -527,7 +591,8 @@ exports.InfoScreen = React.createClass({
                                 "b",
                                 null,
                                 "Information"
-                            )
+                            ),
+                            React.createElement(emergency.Emergency, null)
                         ),
                         React.createElement(
                             "div",
@@ -575,25 +640,127 @@ exports.InfoScreen = React.createClass({
         } // end of switch
     } // end of render
 }); // end of infoscreen
-},{}],3:[function(require,module,exports){
+},{"./emergency.js":1}],4:[function(require,module,exports){
 "use strict";
+
+var emergency = require('./emergency.js');
 
 exports.SocialScreen = React.createClass({
     displayName: "SocialScreen",
 
     render: function render() {
         return React.createElement(
-            "h1",
-            null,
-            "This is the social Screen "
+            "div",
+            { className: "content full" },
+            React.createElement(
+                "section",
+                null,
+                React.createElement(
+                    "header",
+                    null,
+                    React.createElement(
+                        "b",
+                        null,
+                        "My Profile"
+                    ),
+                    React.createElement(emergency.Emergency, null)
+                ),
+                React.createElement(
+                    "article",
+                    { className: "drug_article" },
+                    React.createElement(
+                        "h1",
+                        { className: "drug_name" },
+                        "My Physician"
+                    )
+                ),
+                React.createElement(
+                    "div",
+                    { className: "data_fields" },
+                    React.createElement(
+                        "ul",
+                        null,
+                        React.createElement(
+                            "li",
+                            null,
+                            React.createElement(
+                                "label",
+                                null,
+                                "Name: "
+                            ),
+                            " ",
+                            React.createElement("input", { type: "text" })
+                        ),
+                        React.createElement(
+                            "li",
+                            null,
+                            React.createElement(
+                                "label",
+                                null,
+                                "Number: "
+                            ),
+                            React.createElement("input", { type: "text", pattern: "\\d*" })
+                        ),
+                        React.createElement("div", { className: "clear" })
+                    ),
+                    React.createElement("div", { className: "clear" })
+                ),
+                React.createElement(
+                    "article",
+                    { className: "drug_article" },
+                    React.createElement(
+                        "h1",
+                        { className: "drug_name" },
+                        "Emergency Contact"
+                    )
+                ),
+                React.createElement(
+                    "div",
+                    { className: "data_fields" },
+                    React.createElement(
+                        "ul",
+                        null,
+                        React.createElement(
+                            "li",
+                            null,
+                            React.createElement(
+                                "label",
+                                null,
+                                "Name: "
+                            ),
+                            " ",
+                            React.createElement("input", { type: "text" })
+                        ),
+                        React.createElement(
+                            "li",
+                            null,
+                            React.createElement(
+                                "label",
+                                null,
+                                "Number: "
+                            ),
+                            React.createElement("input", { type: "text", pattern: "\\d*" }),
+                            " "
+                        ),
+                        React.createElement("div", { className: "clear" })
+                    ),
+                    React.createElement("div", { className: "clear" })
+                ),
+                React.createElement(
+                    "div",
+                    { className: "save big_btn" },
+                    "Save"
+                ),
+                React.createElement("div", { className: "clear" })
+            )
         );
     }
 });
-},{}],4:[function(require,module,exports){
+},{"./emergency.js":1}],5:[function(require,module,exports){
 'use strict';
 
 window.geocoder;
-
+var emergency = require('./emergency.js');
 var meetings_url = 'https://samhsa-ebdef.firebaseio.com/data/';
 
 var getCookie = function getCookie(name) {
@@ -952,7 +1119,8 @@ exports.SupportScreen = React.createClass({
                                 'b',
                                 null,
                                 'support'
-                            )
+                            ),
+                            React.createElement(emergency.Emergency, null)
                         ),
                         React.createElement(
                             'article',
@@ -977,4 +1145,4 @@ exports.SupportScreen = React.createClass({
         } // end switch
     }
 });
-},{}]},{},[1]);
+},{"./emergency.js":1}]},{},[2]);

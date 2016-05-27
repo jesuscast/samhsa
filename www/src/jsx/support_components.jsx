@@ -1,5 +1,5 @@
 window.geocoder;
-
+const emergency = require('./emergency.js');
 let meetings_url = 'https://samhsa-ebdef.firebaseio.com/data/';
 
 let getCookie = function(name) {
@@ -290,6 +290,7 @@ exports.SupportScreen = React.createClass({
                         <section>
                             <header>
                             <b>support</b>
+                             <emergency.Emergency />
                             </header>
                             <article className="drug_article">
                                 <h1 className="drug_name">Meetings</h1>

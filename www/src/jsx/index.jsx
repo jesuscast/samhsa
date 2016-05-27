@@ -3,7 +3,7 @@ let test_in_cordova = false;
 const social_manager = require('./social_components.js');
 const support_manager = require('./support_components.js');
 const info_manager = require('./info_components.js');
-
+const emergency = require('./emergency.js');
 /*
 
 https://gist.github.com/amolk/1599412
@@ -56,7 +56,7 @@ let FooterSection = React.createClass({
                 <ul>
                     <li onClick={this.props.onClick.bind(this, 'info')}><span>Info</span><i className={"fa fa-info fa-2x "+info_selected}></i></li>
                     <li onClick={this.props.onClick.bind(this, 'support')}><span>Support</span><i className={"fa fa-star fa-2x "+support_selected}></i></li>
-                    <li onClick={this.props.onClick.bind(this, 'social')}><span>Social</span><i className={"fa fa-group fa-2x "+social_selected}></i></li>
+                    <li onClick={this.props.onClick.bind(this, 'social')}><span>Profile</span><i className={"fa fa-user fa-2x "+social_selected}></i></li>
                 </ul>
             </footer>
         );
@@ -72,7 +72,7 @@ let App = React.createClass({
                 'home'
         */
         return {
-            screen: 'info'
+            screen: 'social'
         };
     },
     changeState: function(future_state){
