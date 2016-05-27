@@ -29,14 +29,22 @@ exports.Emergency = React.createClass({
                         "div",
                         { className: "inner_c" },
                         React.createElement(
-                            "div",
-                            { className: "big_btn" },
-                            "Call Emergency Contact"
+                            "a",
+                            { href: "tel:" + localStorage.getItem('physician_number') },
+                            React.createElement(
+                                "div",
+                                { className: "big_btn" },
+                                "Call Emergency Contact"
+                            )
                         ),
                         React.createElement(
-                            "div",
-                            { className: "big_btn" },
-                            "Call Physician"
+                            "a",
+                            { href: "tel:" + localStorage.getItem('emergency_number') },
+                            React.createElement(
+                                "div",
+                                { className: "big_btn" },
+                                "Call Physician"
+                            )
                         ),
                         React.createElement(
                             "div",

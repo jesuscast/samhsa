@@ -61,7 +61,6 @@ var SpecificDrugScreen = React.createClass({
                     "header",
                     null,
                     React.createElement("i", { onClick: this.toS, className: "fa fa-chevron-circle-left fa-2x" }),
-                    " Common Searchsddes",
                     React.createElement(emergency.Emergency, null)
                 ),
                 React.createElement(
@@ -136,7 +135,6 @@ var DrugScreen = React.createClass({
                                 { className: "back_btn" },
                                 React.createElement("i", { onClick: this.props.goBack, className: "fa fa-chevron-circle-left fa-2x" })
                             ),
-                            "Common Searches",
                             React.createElement(emergency.Emergency, null)
                         ),
                         React.createElement(

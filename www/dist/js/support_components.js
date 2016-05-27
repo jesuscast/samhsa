@@ -57,7 +57,16 @@ var LocationComponent = React.createClass({
                     var country = value[count - 1];
                     var state = value[count - 2];
                     var city = value[count - 3];
-                    var long_state_name = results[0].address_components[5].long_name;
+                    var long_state_name = "";
+                    console.log(state);
+                    console.log(city);
+                    for (var i = 0; i < results[0].address_components.length; i++) {
+                        if (results[0].address_components[i].types[0] == 'administrative_area_level_1') {
+                            long_state_name = results[0].address_components[i].long_name;
+                            console.log(long_state_name);
+                            break;
+                        }
+                    }
                     self.setState({
                         screen_name: "main_screen",
                         lat: position.coords.latitude,
@@ -296,10 +305,11 @@ exports.SupportScreen = React.createClass({
         if (this.state.long_state_name != '') {
             $.ajax({
                 async: true,
-                url: meetings_url + '/' + this.state.long_state_name + '/.json',
+                url: meetings_url + this.state.long_state_name + '/.json',
                 method: 'GET',
                 dataType: 'json',
                 complete: function complete(data) {
+                    window.test_me = data;
                     var data_r = data.responseJSON;
                     var o_k = Object.keys(data_r);
                     var tmp = [];
